@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -24,9 +27,14 @@ public class BreakTimeView extends JPanel {
         top_panel.setBackground(Color.decode("#117DB2"));
         center_panel.setBackground(Color.decode("#09C4FB"));
         //Top
+        ImageIcon back_img = new ImageIcon("src/images/back.png");
+        back_button.setIcon(back_img);
+        
+        back_button.setBackground(Color.decode("#117DB2"));
+        back_button.setBorderPainted(false);
+        back_button.setBounds(10, 1, 48, 48);
         break_title.setFont(new Font("Arial", Font.PLAIN, 32));
         break_title.setBounds(220, 0, 200, 50);
-        back_button.setBounds(10, 1, 48, 48);
         //Center
         break_time.setBounds(50, 100, 500, 120);
         break_time.setFont(new Font("Arial", Font.PLAIN, 120));
