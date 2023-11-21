@@ -14,7 +14,7 @@ public class MainControl {
         objMainView.closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                objMainView.setVisible(false);
+                objMainView.dispose();
             }
         });
     }

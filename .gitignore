@@ -9,3 +9,4 @@ test/
 #Files
 build.*
 manifest.*
+*.class
