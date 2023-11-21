@@ -1,0 +1,11 @@
+#Folders
+.vscode/
+bin/
+build/
+dist/
+nbproject/
+test/
+
+#Files
+build.*
+manifest.*
