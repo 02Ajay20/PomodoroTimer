@@ -20,8 +20,9 @@ public class MainView extends JFrame{
         setSize(600, 450);
         setUndecorated(true);
         setLocationRelativeTo(null);
-        setVisible(true);
         GUI();
+
+        setVisible(true);
     }
 
     public void GUI(){
@@ -56,29 +57,29 @@ public class MainView extends JFrame{
         panel.add(workLabel);
       
         workTextField = new JTextField("25");
-        workTextField.setBounds(300, 170, 100, 30);
+        workTextField.setBounds(300, 165, 100, 30);
         workTextField.setEnabled(false);
         panel.add(workTextField);
              
         workComboBox = new JComboBox<>(new String[]{"25", "1", "10", "30", "Personalizar"});
-        workComboBox.setBounds(410, 170, 80, 30);
+        workComboBox.setBounds(410, 165, 80, 30);
         panel.add(workComboBox);
 
         //----------- Break Time section ---------------------------
 
         breakLabel = new JLabel("Break Time");
-        breakLabel.setBounds(140, 200, 300, 80);
+        breakLabel.setBounds(140, 190, 300, 80);
         breakLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
         breakLabel.setForeground(Color.decode("#09374e"));
         panel.add(breakLabel);
 
         breakTextField = new JTextField("5");
-        breakTextField.setBounds(300, 230, 100, 30);
+        breakTextField.setBounds(300, 215, 100, 30);
         breakTextField.setEnabled(false);
         panel.add(breakTextField);
 
         breakComboBox = new JComboBox<>(new String[]{"5", "1", "10", "15", "Personalizar"});
-        breakComboBox.setBounds(410, 230, 80, 30);
+        breakComboBox.setBounds(410, 215, 80, 30);
         panel.add(breakComboBox);
 
         //----------- Buttons section ------------------------------
@@ -121,7 +122,5 @@ public class MainView extends JFrame{
     public static void main(String[] args) {
         MainView mainView = new MainView();
         MainControl mainControl = new MainControl(mainView);
-        mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainView.setVisible(true);
     }
 }
