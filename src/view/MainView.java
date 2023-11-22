@@ -55,12 +55,12 @@ public class MainView extends JFrame{
         workLabel.setForeground(Color.decode("#09374e"));
         panel.add(workLabel);
       
-        workTextField = new JTextField();
+        workTextField = new JTextField("25");
         workTextField.setBounds(300, 170, 100, 30);
         workTextField.setEnabled(false);
         panel.add(workTextField);
              
-        workComboBox = new JComboBox<>(new String[]{"10", "20", "30", "Personalizar"});
+        workComboBox = new JComboBox<>(new String[]{"25", "1", "10", "30", "Personalizar"});
         workComboBox.setBounds(410, 170, 80, 30);
         panel.add(workComboBox);
 
@@ -72,12 +72,12 @@ public class MainView extends JFrame{
         breakLabel.setForeground(Color.decode("#09374e"));
         panel.add(breakLabel);
 
-        breakTextField = new JTextField();
+        breakTextField = new JTextField("5");
         breakTextField.setBounds(300, 230, 100, 30);
         breakTextField.setEnabled(false);
         panel.add(breakTextField);
 
-        breakComboBox = new JComboBox<>(new String[]{"5", "10", "15", "Personalizar"});
+        breakComboBox = new JComboBox<>(new String[]{"5", "1", "10", "15", "Personalizar"});
         breakComboBox.setBounds(410, 230, 80, 30);
         panel.add(breakComboBox);
 
