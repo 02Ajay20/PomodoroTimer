@@ -121,7 +121,5 @@ public class MainView extends JFrame{
     public static void main(String[] args) {
         MainView mainView = new MainView();
         MainControl mainControl = new MainControl(mainView);
-        mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainView.setVisible(true);
     }
 }

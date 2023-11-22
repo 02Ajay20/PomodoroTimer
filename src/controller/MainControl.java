@@ -49,5 +49,12 @@ public class MainControl {
                 }
             }
         });
+
+        objMainView.defaultButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 }
