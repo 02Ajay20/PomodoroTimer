@@ -69,19 +69,21 @@ public class BreakTimeView extends JPanel {
         back_button.addActionListener(bc);
     }
     
-    public static void main(String[] args) {
-        BreakTimeView panel = new BreakTimeView();
-        JFrame prueba = new JFrame();
 
-        prueba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        prueba.setSize(600, 450);
-        prueba.setLocationRelativeTo(null);
-        prueba.setUndecorated(true);
-        // prueba.setLayout(null);
 
-        prueba.add(panel);
+    // public static void main(String[] args) {
+    //     BreakTimeView panel = new BreakTimeView();
+    //     JFrame prueba = new JFrame();
+
+    //     prueba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     prueba.setSize(600, 450);
+    //     prueba.setLocationRelativeTo(null);
+    //     prueba.setUndecorated(true);
+    //     // prueba.setLayout(null);
+
+    //     prueba.add(panel);
         
-        prueba.setVisible(true);
-    }
+    //     prueba.setVisible(true);
+    // }
 
 }

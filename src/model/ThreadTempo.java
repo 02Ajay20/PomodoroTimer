@@ -1,23 +1,21 @@
 package model;
 
-import java.awt.Toolkit;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-// import javax.swing.JButton;
-// import javax.swing.JFrame;
-// import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
-public class ThreadTempo {
-    // JButton btnPause, btnStart, btnStop;
-    // JLabel etiquetaTiempo;
-    static private boolean work_or_break = true;
+public class ThreadTempo extends JFrame {
+    JButton btnPause, btnStart, btnStop;
+    JLabel etiquetaTiempo;
     Timer t;
-    int h, m, s;
-    public ActionListener acciones = new ActionListener(){
+    int h, m = 1, s = 10;
+    private ActionListener acciones = new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent ae) {            
-            actualizarLabel();
             --s;
             if(s==0){
                 if (m > 0) {
@@ -33,29 +31,23 @@ public class ThreadTempo {
             }
             if (s==0&&m==0&&h==0) {
                 evento_btnStop();
-                alarma();
             }
         }
     };
     
-    public ThreadTempo(int hours, int minutes, int seconds) {
-        h = hours;
-        m = minutes;
-        s = seconds;
+    public ThreadTempo() {
+        super();
+        setSize(500, 200);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         t = new Timer(1000, acciones);
-
-
-        // super();
-        // setSize(500, 200);
-        // setLocationRelativeTo(null);
-        // setDefaultCloseOperation(EXIT_ON_CLOSE);
-        // setLayout(null);
+        setLayout(null);
         
-        // crearGUI();
-        // setVisible(true);
+        crearGUI();
+        setVisible(true);
     }
     
-    public String actualizarLabel() {
+    private String actualizarLabel() {
         String tiempo = "";
         
         if (h < 10) {
@@ -76,22 +68,10 @@ public class ThreadTempo {
             tiempo += s;
         }
         
-        // etiquetaTiempo.setText(tiempo);
         return tiempo;
     }
 
-    public void alarma() {
-        for (int i = 0; i <= 4; i++) {
-            Toolkit.getDefaultToolkit().beep();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /*private void crearGUI() {
+    private void crearGUI() {
         etiquetaTiempo = new JLabel();
         etiquetaTiempo.setBounds(130, 30, 200, 40);
         etiquetaTiempo.setHorizontalAlignment(JLabel.CENTER);
@@ -115,40 +95,35 @@ public class ThreadTempo {
         btnStop.setEnabled(false);
         btnStop.addActionListener((e) -> evento_btnStop());
         add(btnStop);
-    }*/
-    
-    public void evento_btnStart() {
-        t.start();
-        // btnStart.setEnabled(false);
-        // btnStart.setText("Reanudar");
-        // btnPause.setEnabled(true);
-        // btnStop.setEnabled(true);
     }
     
-    public void evento_btnPause() {
+    private void evento_btnStart() {
+        t.start();
+        btnStart.setEnabled(false);
+        btnStart.setText("Reanudar");
+        btnPause.setEnabled(true);
+        btnStop.setEnabled(true);
+    }
+    
+    private void evento_btnPause() {
         t.stop();
-        // btnStart.setEnabled(true);
-        // btnPause.setEnabled(false);
+        btnStart.setEnabled(true);
+        btnPause.setEnabled(false);
     }
     
     private void evento_btnStop() {
         if(t.isRunning()){
             t.stop();
-            // btnStart.setEnabled(true);
+            btnStart.setEnabled(true);
         }
-        // btnStart.setText("Iniciar");
-        // btnPause.setEnabled(false);
-        // btnStop.setEnabled(false);
+        btnStart.setText("Iniciar");
+        btnPause.setEnabled(false);
+        btnStop.setEnabled(false);
         h=0; m=0; s=0;
         actualizarLabel();
     }
     
-    public void setWorkOrBreak(boolean state) {
-        work_or_break = state;
+    public static void main(String[] args) {
+        ThreadTempo cr = new ThreadTempo();
     }
-
-    // public static void main(String[] args) {
-    //     ThreadTempo cr = new ThreadTempo();
-    //     cr.alarma();
-    // }
 }
