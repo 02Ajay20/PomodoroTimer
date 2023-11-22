@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import model.alarm;
+import model.Alarm;
 import view.BreakTimeView;
+import view.MainView;
 import view.WorkTimeView;
 
 public class BreakTimeControl implements ActionListener {
@@ -23,14 +24,23 @@ public class BreakTimeControl implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bv.stop_button) {
-            if (paused) {
+            if (paused == false) {
                 timer.stop();
             } else {
                 timer.start();
             }
             paused = !paused;
         }
-
+        if (e.getSource() == bv.skip_button) {
+            nextWindow();
+        }
+        if (e.getSource() == bv.back_button) {
+            timer.stop();
+            bv.setVisible(false);
+            MainView mv = new MainView();
+            MainControl mc = new MainControl(mv);
+            mv.panel.setVisible(true);
+        }
     }
 
     private ActionListener acciones = new ActionListener(){
@@ -51,11 +61,8 @@ public class BreakTimeControl implements ActionListener {
             }
             bv.break_time.setText(actualizarLabel());
             if (s==0&&m==0&&h==0) {
-                System.out.println(s);
-                alarm.alarm_tempo();
-                timer.stop();
-                WorkTimeView wv = new WorkTimeView();
-                wv.setVisible(true);
+                Alarm.alarm_tempo();
+                nextWindow();
             }
         }
         
@@ -85,4 +92,13 @@ public class BreakTimeControl implements ActionListener {
         return tiempo;
     }
     
+    public void nextWindow() {
+        timer.stop();
+        MainView mv = new MainView();
+        MainControl mc = new MainControl(mv);
+        mv.getContentPane().removeAll();
+        mv.add(new WorkTimeView());
+        mv.revalidate();
+    }
+
 }

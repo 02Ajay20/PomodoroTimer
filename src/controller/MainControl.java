@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.Action;
-
 import view.BreakTimeView;
 import view.MainView;
 import view.WorkTimeView;
@@ -22,6 +20,7 @@ public class MainControl {
         objMainView.closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                System.exit(0);
                 objMainView.dispose();
             }
         });
@@ -59,10 +58,10 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objBreakTimeView = new BreakTimeView();
+                objWorkTimeView = new WorkTimeView();
                 objMainView.panel.setVisible(false);
-                objMainView.add(objBreakTimeView);
-                objBreakTimeView.setVisible(true);
+                objMainView.add(objWorkTimeView);
+                objWorkTimeView.setVisible(true);
             }
         });
 
