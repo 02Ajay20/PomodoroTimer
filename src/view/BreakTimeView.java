@@ -4,18 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+// import java.awt.Toolkit;
+// import java.awt.event.ActionEvent;
+// import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import controller.BreakTimeControl;
 
 public class BreakTimeView extends JPanel {
     private JLabel break_title = new JLabel("Break Time");
     public JLabel break_time = new JLabel("00:00:00");
     public JButton back_button = new JButton();
-    public JButton stop_button = new JButton("Stop");
+    public JButton stop_button = new JButton("Pause");
     public JButton skip_button = new JButton("Skip");
 
     private JPanel top_panel = new JPanel(null);
@@ -60,6 +62,11 @@ public class BreakTimeView extends JPanel {
         center_panel.add(skip_button);
         add(top_panel, BorderLayout.NORTH);
         add(center_panel, BorderLayout.CENTER);
+
+        BreakTimeControl bc = new BreakTimeControl(this);
+        stop_button.addActionListener(bc);
+        skip_button.addActionListener(bc);
+        back_button.addActionListener(bc);
     }
     
     public static void main(String[] args) {
