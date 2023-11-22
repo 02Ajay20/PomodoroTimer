@@ -20,8 +20,9 @@ public class MainView extends JFrame{
         setSize(600, 450);
         setUndecorated(true);
         setLocationRelativeTo(null);
-        setVisible(true);
         GUI();
+
+        setVisible(true);
     }
 
     public void GUI(){
