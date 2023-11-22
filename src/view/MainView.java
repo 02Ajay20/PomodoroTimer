@@ -31,7 +31,7 @@ public class MainView extends JFrame{
 
         //----------- Close Button ---------------------------
 
-        close = new ImageIcon(getClass().getResource("../images/close.png"));
+        close = new ImageIcon("src/images/close.png");
         closeButton = new JButton(close);
         closeButton.setBounds(550, 5, 45, 45);
         closeButton.setContentAreaFilled(false);
