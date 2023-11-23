@@ -30,7 +30,6 @@ public class ListControl {
                 MainView obj_mainview = new MainView();
                 MainControl objMainControl = new MainControl(obj_mainview);
                 obj_listview.setVisible(false);
-                obj_listview.add(obj_mainview);
                 obj_mainview.setVisible(true);
             }
         });

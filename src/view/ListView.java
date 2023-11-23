@@ -4,8 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import controller.ListControl;
-
 public class ListView extends JPanel {
 
     public JButton boton_volver;
@@ -31,10 +29,14 @@ public class ListView extends JPanel {
 
         add(boton_volver, BorderLayout.WEST); 
         add(scrollPane, BorderLayout.CENTER);
+
+        setVisible(true);
+        GUI();
     }
 
-    public void getTimes(String work_time, String break_time) {
-        String[] row = {work_time, break_time};
-        model.addRow(row);
+    public void GUI(){
+        String lista[] = {"hola", "1", "2"};
+
+        model.addRow(lista);
     }
 }

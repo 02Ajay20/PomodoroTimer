@@ -13,6 +13,7 @@ import view.MainView;
 public class MainControl {
     public static MainView objMainView;
     TimerView objTimerView;
+    public ListView objListView;
 
     public MainControl(MainView objMainView){
         MainControl.objMainView = objMainView;
@@ -58,6 +59,7 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 objMainView.setTempo();
                 
                 objTimerView = new TimerView();
@@ -65,12 +67,6 @@ public class MainControl {
                 objMainView.panel.setVisible(false);
                 objMainView.add(objTimerView);
                 objTimerView.setVisible(true);
-
-                String work_ = (String) objMainView.workComboBox.getSelectedItem();
-                String break_ = (String) objMainView.breakComboBox.getSelectedItem();
-
-                ListView objListView = null;
-                objListView.getTimes(work_, break_);
             }
         });
 
@@ -99,6 +95,12 @@ public class MainControl {
                 objMainView.panel.setVisible(false);
                 About obj_about = new About();
                 AboutControl obj_about_control = new AboutControl(obj_about);
+
+                //String work_ = (String) objMainView.workComboBox.getSelectedItem();
+                //String break_ = (String) objMainView.breakComboBox.getSelectedItem();
+                objListView = new ListView();
+                String fila[] = {"12-03-2023", "work_", "break_"};
+                objListView.model.addRow(fila);
             }
         });
     }
