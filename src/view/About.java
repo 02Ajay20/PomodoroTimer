@@ -167,7 +167,7 @@ public class About extends JDialog {
     button_back = new JButton(icon_back);
     button_back.setBorderPainted(false);
     button_back.setContentAreaFilled(false);
-    button_back.setBounds(380, 30, 45, 45);
+    button_back.setBounds(20, 30, 45, 45);
     add(button_back);
   }
 
