@@ -16,6 +16,11 @@ public class MainView extends JFrame{
     public JTextField workTextField, breakTextField;
     public JComboBox<String> workComboBox, breakComboBox;
 
+    public static int work_hours = 0;
+    public static int work_minutes = 0;
+    public static int break_hours = 0;
+    public static int break_minutes = 0;
+
     public MainView(){
         setSize(600, 450);
         setUndecorated(true);
@@ -118,9 +123,42 @@ public class MainView extends JFrame{
         add(panel);
     }
 
+    public void setTempo() {
+        String worktime = workTextField.getText();
+        String breaktime = breakTextField.getText();
+        int worknum = Integer.parseInt(worktime);
+        int breaknum = Integer.parseInt(breaktime);
+
+        if (worknum > 60) {
+            work_hours = worknum / 60;
+            work_minutes = worknum % 60;
+        } else {
+            work_minutes = worknum;
+        }
+        if (breaknum > 60) {
+            break_hours = breaknum / 60;
+            break_minutes = breaknum % 60;
+        } else {
+            break_minutes = breaknum;
+        }
+    }
+
+    public static int getWorkHours() {
+        return work_hours;
+    }
+    public static int getWorkMinutes() {
+        return work_minutes;
+    }
+    public static int getBreakHours() {
+        return break_hours;
+    }
+    public static int getBreakMinutes() {
+        return break_minutes;
+    }
 
     public static void main(String[] args) {
         MainView mainView = new MainView();
+        mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MainControl mainControl = new MainControl(mainView);
     }
 }

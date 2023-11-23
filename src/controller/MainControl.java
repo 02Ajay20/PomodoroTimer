@@ -5,23 +5,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.Action;
-
-import view.BreakTimeView;
+import view.TimerView;
 import view.MainView;
-import view.WorkTimeView;
 
 public class MainControl {
-    MainView objMainView;
-    BreakTimeView objBreakTimeView;
-    WorkTimeView objWorkTimeView;
+    public static MainView objMainView;
+    TimerView objTimerView;
 
     public MainControl(MainView objMainView){
-        this.objMainView = objMainView;
+        MainControl.objMainView = objMainView;
 
         objMainView.closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                System.exit(0);
                 objMainView.dispose();
             }
         });
@@ -59,18 +56,21 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objBreakTimeView = new BreakTimeView();    //Cambiar breaktime por worktime
+                objMainView.setTempo();
+                
+                objTimerView = new TimerView();
+
                 objMainView.panel.setVisible(false);
-                objMainView.add(objBreakTimeView);
-                objBreakTimeView.setVisible(true);
+                objMainView.add(objTimerView);
+                objTimerView.setVisible(true);
             }
         });
 
         objMainView.defaultButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objMainView.workTextField.setText("25");
-                objMainView.breakTextField.setText("5");
+                objMainView.workComboBox.setSelectedItem("25");
+                objMainView.breakComboBox.setSelectedItem("5");
             }
         });
 
