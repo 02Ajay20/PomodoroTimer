@@ -65,6 +65,12 @@ public class MainControl {
                 objMainView.panel.setVisible(false);
                 objMainView.add(objTimerView);
                 objTimerView.setVisible(true);
+
+                String work_ = (String) objMainView.workComboBox.getSelectedItem();
+                String break_ = (String) objMainView.breakComboBox.getSelectedItem();
+
+                ListView objListView = null;
+                objListView.getTimes(work_, break_);
             }
         });
 

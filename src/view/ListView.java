@@ -32,4 +32,9 @@ public class ListView extends JPanel {
         add(boton_volver, BorderLayout.WEST); 
         add(scrollPane, BorderLayout.CENTER);
     }
+
+    public void getTimes(String work_time, String break_time) {
+        String[] row = {work_time, break_time};
+        model.addRow(row);
+    }
 }
