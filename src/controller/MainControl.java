@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import view.TimerView;
+import view.About;
 import view.MainView;
 
 public class MainControl {
@@ -77,7 +78,9 @@ public class MainControl {
         objMainView.aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //JDialog
+                objMainView.panel.setVisible(false);
+                About obj_about = new About();
+                AboutControl obj_about_control = new AboutControl(obj_about);
             }
         });
     }
