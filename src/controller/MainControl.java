@@ -5,17 +5,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import view.BreakTimeView;
+import view.TimerView;
 import view.MainView;
-import view.WorkTimeView;
 
 public class MainControl {
-    MainView objMainView;
-    BreakTimeView objBreakTimeView;
-    WorkTimeView objWorkTimeView;
+    public static MainView objMainView;
+    TimerView objTimerView;
 
     public MainControl(MainView objMainView){
-        this.objMainView = objMainView;
+        MainControl.objMainView = objMainView;
 
         objMainView.closeButton.addActionListener(new ActionListener() {
             @Override
@@ -59,11 +57,11 @@ public class MainControl {
             @Override
             public void actionPerformed(ActionEvent e) {
                 objMainView.setTempo();
-
-                objWorkTimeView = new WorkTimeView();
+                
+                objTimerView = new TimerView();
                 objMainView.panel.setVisible(false);
-                objMainView.add(objWorkTimeView);
-                objWorkTimeView.setVisible(true);
+                objMainView.add(objTimerView);
+                objTimerView.setVisible(true);
             }
         });
 

@@ -6,44 +6,46 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import model.Alarm;
-import view.BreakTimeView;
+import view.TimerView;
 import view.MainView;
-import view.WorkTimeView;
+// import view.WorkTimeView;
 
-public class BreakTimeControl implements ActionListener {
-    BreakTimeView bv;
+public class TimerControl implements ActionListener {
+    boolean work_or_break = true;
+    TimerView timer_view;
     Timer timer;
     boolean paused = false;
     int h, m, s;
 
-    public BreakTimeControl(BreakTimeView bv, int hours, int minutes) {
-        h = hours;
-        m = minutes;
+    public TimerControl(TimerView timer_view) {
+        h = MainView.getWorkHours();
+        m = MainView.getWorkMinutes();
         s = 1;
 
-        this.bv = bv;
+        this.timer_view = timer_view;
         timer = new Timer(1000, acciones);
         timer.start();
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bv.stop_button) {
+        if (e.getSource() == timer_view.stop_button) {
             if (paused == false) {
                 timer.stop();
+                timer_view.stop_button.setText("Play");
             } else {
                 timer.start();
+                timer_view.stop_button.setText("Pause");
             }
             paused = !paused;
         }
-        if (e.getSource() == bv.skip_button) {
+        if (e.getSource() == timer_view.skip_button) {
             nextWindow();
         }
-        if (e.getSource() == bv.back_button) {
+        if (e.getSource() == timer_view.back_button) {
             timer.stop();
-            bv.setVisible(false);
-            MainView mv = new MainView();
-            MainControl mc = new MainControl(mv);
-            mv.panel.setVisible(true);
+            timer_view.setVisible(false);
+            MainControl.objMainView.panel.setVisible(true);
+            MainControl.objMainView.remove(timer_view);
         }
     }
 
@@ -63,7 +65,7 @@ public class BreakTimeControl implements ActionListener {
                     --h;
                 }
             }
-            bv.break_time.setText(actualizarLabel());
+            timer_view.timer_time.setText(actualizarLabel());
             if (s==0&&m==0&&h==0) {
                 Alarm.alarm_tempo();
                 nextWindow();
@@ -98,11 +100,25 @@ public class BreakTimeControl implements ActionListener {
     
     public void nextWindow() {
         timer.stop();
-        MainView mv = new MainView();
-        MainControl mc = new MainControl(mv);
-        mv.getContentPane().removeAll();
-        mv.add(new WorkTimeView());
-        mv.revalidate();
+        timer_view.timer_time.setText("00:00:00");
+        s = 1;
+        if (work_or_break) {
+            timer_view.breakPomodoro();
+            h = MainView.getBreakHours();
+            m = MainView.getBreakMinutes();
+        } else {
+            timer_view.workPomodoro();
+            h = MainView.getWorkHours();
+            m = MainView.getWorkMinutes();
+        }
+        work_or_break = !work_or_break;
+        timer.start();
+
+        // MainView mv = new MainView();
+        // MainControl mc = new MainControl(mv);
+        // mv.getContentPane().removeAll();
+        // mv.add(new WorkTimeView());
+        // mv.revalidate();
     }
 
 }

@@ -11,11 +11,11 @@ import java.awt.Font;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import controller.BreakTimeControl;
+import controller.TimerControl;
 
-public class BreakTimeView extends JPanel {
-    private JLabel break_title = new JLabel("Break Time");
-    public JLabel break_time = new JLabel("00:00:00");
+public class TimerView extends JPanel {
+    private JLabel timer_title = new JLabel();
+    public JLabel timer_time = new JLabel("00:00:00");
     public JButton back_button = new JButton();
     public JButton stop_button = new JButton("Pause");
     public JButton skip_button = new JButton("Skip");
@@ -23,25 +23,23 @@ public class BreakTimeView extends JPanel {
     private JPanel top_panel = new JPanel(null);
     private JPanel center_panel = new JPanel(null);
 
-    public BreakTimeView() {
+    public TimerView() {
         setLayout(new BorderLayout());
         top_panel.setPreferredSize(new Dimension(getWidth(), 50));
-        top_panel.setBackground(Color.decode("#117DB2"));
-        center_panel.setBackground(Color.decode("#09C4FB"));
+        workPomodoro();
         //Top
         ImageIcon back_img = new ImageIcon("src/images/back.png");
         back_button.setIcon(back_img);
         
-        back_button.setBackground(Color.decode("#117DB2"));
         back_button.setBorderPainted(false);
         back_button.setBounds(10, 1, 48, 48);
-        break_title.setFont(new Font("Arial", Font.PLAIN, 32));
-        break_title.setBounds(220, 0, 200, 50);
+        timer_title.setFont(new Font("Arial", Font.PLAIN, 32));
+        timer_title.setBounds(220, 0, 200, 50);
         //Center
-        break_time.setBounds(50, 100, 500, 120);
-        break_time.setFont(new Font("Arial", Font.PLAIN, 120));
+        timer_time.setBounds(50, 100, 500, 120);
+        timer_time.setFont(new Font("Arial", Font.PLAIN, 120));
         Border border = BorderFactory.createLineBorder(Color.BLACK, 5);
-        break_time.setBorder(border);
+        timer_time.setBorder(border);
 
         stop_button.setBounds(120, 280, 150, 70);
         stop_button.setFont(new Font("Arial", Font.BOLD, 24));
@@ -50,25 +48,40 @@ public class BreakTimeView extends JPanel {
         stop_button.setBorder(stop_border);
 
         skip_button.setBounds(320, 280, 150, 70);
-        skip_button.setFont(new Font("Arial", Font.BOLD, 24));
         skip_button.setBackground(Color.decode("#B2F2BB"));
+        skip_button.setFont(new Font("Arial", Font.BOLD, 24));
         Border skip_border = BorderFactory.createLineBorder(Color.decode("#2F9E44"));
         skip_button.setBorder(skip_border);
 
         top_panel.add(back_button);
-        top_panel.add(break_title);
-        center_panel.add(break_time);
+        top_panel.add(timer_title);
+        center_panel.add(timer_time);
         center_panel.add(stop_button);
         center_panel.add(skip_button);
         add(top_panel, BorderLayout.NORTH);
         add(center_panel, BorderLayout.CENTER);
 
-        BreakTimeControl bc = new BreakTimeControl(this, MainView.getBreakHours(), MainView.getBreakMinutes());
+        TimerControl bc = new TimerControl(this);
         stop_button.addActionListener(bc);
         skip_button.addActionListener(bc);
         back_button.addActionListener(bc);
     }
+
+    public void workPomodoro() {
+        top_panel.setBackground(Color.decode("#7FC940"));
+        center_panel.setBackground(Color.decode("#ABDD53"));
+
+        back_button.setBackground(Color.decode("#7FC940"));
+        timer_title.setText("Work Time");
+    }
     
+    public void breakPomodoro() {
+        top_panel.setBackground(Color.decode("#117DB2"));
+        center_panel.setBackground(Color.decode("#09C4FB"));
+        
+        back_button.setBackground(Color.decode("#117DB2"));
+        timer_title.setText("Break Time");
+    }
 
 
     // public static void main(String[] args) {
