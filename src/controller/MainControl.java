@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import view.TimerView;
+import view.ListView;
 import view.MainView;
 
 public class MainControl {
@@ -71,6 +72,16 @@ public class MainControl {
             public void actionPerformed(ActionEvent e) {
                 objMainView.workComboBox.setSelectedItem("25");
                 objMainView.breakComboBox.setSelectedItem("5");
+            }
+        });
+
+        objMainView.reportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ListView listview = new ListView();
+                objMainView.panel.setVisible(false);
+                objMainView.add(listview);
+                listview.setVisible(true);
             }
         });
 

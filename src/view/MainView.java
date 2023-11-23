@@ -9,7 +9,7 @@ import javax.swing.border.Border;
 import controller.MainControl;
 
 public class MainView extends JFrame{
-    public JButton closeButton, startButton, defaultButton, aboutButton;
+    public JButton closeButton, startButton, defaultButton, aboutButton, reportButton;
     public JLabel title, workLabel, breakLabel;
     public JPanel panel;
     public ImageIcon close;
@@ -91,7 +91,7 @@ public class MainView extends JFrame{
 
         //-About button---------------------------------------------
         aboutButton = new JButton("About");
-        aboutButton.setBounds(240, 400, 140, 40);
+        aboutButton.setBounds(330, 380, 140, 40);
         aboutButton.setFont(new Font("Arial", Font.BOLD, 20));
         aboutButton.setBackground(Color.decode("#8a8a8a"));
         aboutButton.setForeground(Color.decode("#ededed"));
@@ -108,6 +108,16 @@ public class MainView extends JFrame{
         Border startButtonBorder = BorderFactory.createLineBorder(Color.decode("#ededed"));
         startButton.setBorder(startButtonBorder);
         panel.add(startButton);
+
+        //-Report Button----------------------------------------------
+        reportButton = new JButton("Report");
+        reportButton.setBounds(160, 380, 140, 40);
+        reportButton.setFont(new Font("Arial", Font.BOLD, 20));
+        reportButton.setBackground(Color.decode("#422185"));
+        reportButton.setForeground(Color.decode("#ededed"));
+        Border reportButtonborder = BorderFactory.createLineBorder(Color.decode("#ededed"));
+        reportButton.setBorder(reportButtonborder);
+        panel.add(reportButton);
 
         //-Default Button---------------------------------------------
         defaultButton = new JButton("Default");
@@ -155,6 +165,7 @@ public class MainView extends JFrame{
     public static int getBreakMinutes() {
         return break_minutes;
     }
+
 
     public static void main(String[] args) {
         MainView mainView = new MainView();
