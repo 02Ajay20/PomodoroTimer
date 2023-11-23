@@ -63,7 +63,7 @@ public class BreakTimeView extends JPanel {
         add(top_panel, BorderLayout.NORTH);
         add(center_panel, BorderLayout.CENTER);
 
-        BreakTimeControl bc = new BreakTimeControl(this);
+        BreakTimeControl bc = new BreakTimeControl(this, MainView.getBreakHours(), MainView.getBreakMinutes());
         stop_button.addActionListener(bc);
         skip_button.addActionListener(bc);
         back_button.addActionListener(bc);

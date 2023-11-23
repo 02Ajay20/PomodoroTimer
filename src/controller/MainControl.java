@@ -58,6 +58,8 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                objMainView.setTempo();
+
                 objWorkTimeView = new WorkTimeView();
                 objMainView.panel.setVisible(false);
                 objMainView.add(objWorkTimeView);
@@ -68,8 +70,8 @@ public class MainControl {
         objMainView.defaultButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objMainView.workTextField.setText("25");
-                objMainView.breakTextField.setText("5");
+                objMainView.workComboBox.setSelectedItem("25");
+                objMainView.breakComboBox.setSelectedItem("5");
             }
         });
 

@@ -14,9 +14,13 @@ public class WorkTimeControl implements ActionListener {
     WorkTimeView wv;
     Timer timer;
     boolean paused = false;
-    int h, m, s = 5;
+    int h, m, s;
 
-    public WorkTimeControl(WorkTimeView wv) {
+    public WorkTimeControl(WorkTimeView wv, int hours, int minutes) {
+        h = hours;
+        m = minutes;
+        s = 1;
+        
         this.wv = wv;
         timer = new Timer(1000, acciones);
         timer.start();

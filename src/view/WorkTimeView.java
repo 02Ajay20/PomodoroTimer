@@ -5,7 +5,6 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,7 +25,7 @@ public class WorkTimeView extends JPanel {
         setBackground(Color.decode("#ABDD53"));
         createGUI();
         
-        WorkTimeControl wc = new WorkTimeControl(this);
+        WorkTimeControl wc = new WorkTimeControl(this, MainView.getWorkHours(), MainView.getWorkMinutes());
         button_pause_continue.addActionListener(wc);
         button_skip.addActionListener(wc);
         button_volver.addActionListener(wc);
