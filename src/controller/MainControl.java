@@ -59,7 +59,7 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objBreakTimeView = new BreakTimeView();
+                objBreakTimeView = new BreakTimeView();    //Cambiar breaktime por worktime
                 objMainView.panel.setVisible(false);
                 objMainView.add(objBreakTimeView);
                 objBreakTimeView.setVisible(true);
