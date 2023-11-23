@@ -80,6 +80,7 @@ public class MainControl {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ListView listview = new ListView();
+                ListControl objListControl = new ListControl(objMainView, listview);
                 objMainView.panel.setVisible(false);
                 objMainView.add(listview);
                 listview.setVisible(true);
