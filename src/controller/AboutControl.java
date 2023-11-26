@@ -19,11 +19,8 @@ public class AboutControl {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        MainView obj_main_view = new MainView();
-        MainControl obj_main_control = new MainControl(obj_main_view);
         obj_about.setVisible(false);
         obj_about.dispose();
-        obj_main_view.setVisible(true);
       }
       
     });

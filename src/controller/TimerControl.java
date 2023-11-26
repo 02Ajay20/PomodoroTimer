@@ -114,11 +114,6 @@ public class TimerControl implements ActionListener {
         work_or_break = !work_or_break;
         timer.start();
 
-        // MainView mv = new MainView();
-        // MainControl mc = new MainControl(mv);
-        // mv.getContentPane().removeAll();
-        // mv.add(new WorkTimeView());
-        // mv.revalidate();
     }
 
 }

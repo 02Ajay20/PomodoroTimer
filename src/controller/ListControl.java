@@ -13,24 +13,21 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.*;
+import view.ListView;
 
 public class ListControl {
-    MainView obj_mainview;
     ListView obj_listview;
     
-    public ListControl (MainView obj_mainview, ListView obj_listview) {
-        this.obj_mainview = obj_mainview;
+    public ListControl (ListView obj_listview) {
         this.obj_listview= obj_listview;
 
 
         obj_listview.boton_volver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainView obj_mainview = new MainView();
-                MainControl objMainControl = new MainControl(obj_mainview);
                 obj_listview.setVisible(false);
-                obj_mainview.setVisible(true);
+                MainControl.objMainView.panel.setVisible(true);
+                MainControl.objMainView.remove(obj_listview);
             }
         });
     }

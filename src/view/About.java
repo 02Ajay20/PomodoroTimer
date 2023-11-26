@@ -54,7 +54,7 @@ public class About extends JDialog {
     subpanel_manuel.setSize(180, 50);
     //subpanel_manuel.setBackground(Color.BLUE);
     
-    icon_manuel = new ImageIcon(getClass().getResource("../images/desarrollador.png"));
+    icon_manuel = new ImageIcon("src/images/desarrollador.png");
     label_icon_manuel = new JLabel(icon_manuel);
     
     label_manuel = new JLabel("Manuel Builes");
@@ -95,7 +95,7 @@ public class About extends JDialog {
     subpanel_oscar.setLayout(new BoxLayout(subpanel_oscar, BoxLayout.Y_AXIS));
     subpanel_oscar.setSize(180, 50);
     
-    icon_oscar = new ImageIcon(getClass().getResource("../images/desarrollador.png"));
+    icon_oscar = new ImageIcon("src/images/desarrollador.png");
     label_icon_oscar = new JLabel(icon_oscar);
     
     label_oscar = new JLabel("Oscar Hernandez");
@@ -136,7 +136,7 @@ public class About extends JDialog {
     subpanel_camilo.setLayout(new BoxLayout(subpanel_camilo, BoxLayout.Y_AXIS));
     subpanel_camilo.setSize(180, 50);
     
-    icon_camilo = new ImageIcon(getClass().getResource("../images/desarrollador.png"));
+    icon_camilo = new ImageIcon("src/images/desarrollador.png");
     label_icon_camilo = new JLabel(icon_camilo);
     
     label_camilo = new JLabel("Camilo Garcia");
@@ -171,7 +171,4 @@ public class About extends JDialog {
     add(button_back);
   }
 
-  public static void main(String[] args) {
-    new About();
-  }
 }

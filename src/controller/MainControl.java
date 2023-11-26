@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import view.TimerView;
 import view.ListView;
@@ -13,7 +15,7 @@ import view.MainView;
 public class MainControl {
     public static MainView objMainView;
     TimerView objTimerView;
-    public ListView objListView;
+    public ListView objListView = new ListView();
 
     public MainControl(MainView objMainView){
         MainControl.objMainView = objMainView;
@@ -59,14 +61,19 @@ public class MainControl {
         objMainView.startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 objMainView.setTempo();
                 
                 objTimerView = new TimerView();
-
                 objMainView.panel.setVisible(false);
                 objMainView.add(objTimerView);
                 objTimerView.setVisible(true);
+
+                //Fill table of report
+                // objListView = new ListView();
+                Date date_regist = new Date();
+                SimpleDateFormat format_date = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                String date_text = format_date.format(date_regist);
+                objListView.fillTable(date_text,objMainView.workTextField.getText(), objMainView.breakTextField.getText());
             }
         });
 
@@ -81,26 +88,20 @@ public class MainControl {
         objMainView.reportButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ListView listview = new ListView();
-                ListControl objListControl = new ListControl(objMainView, listview);
+                // ListView listview = new ListView(); // si creas dos instancias se crea dos veces y da error de logica
+                ListControl objListControl = new ListControl(objListView);
                 objMainView.panel.setVisible(false);
-                objMainView.add(listview);
-                listview.setVisible(true);
+                objMainView.add(objListView);
+                objListView.setVisible(true);
             }
         });
 
         objMainView.aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                objMainView.panel.setVisible(false);
                 About obj_about = new About();
+                obj_about.setVisible(true);
                 AboutControl obj_about_control = new AboutControl(obj_about);
-
-                //String work_ = (String) objMainView.workComboBox.getSelectedItem();
-                //String break_ = (String) objMainView.breakComboBox.getSelectedItem();
-                objListView = new ListView();
-                String fila[] = {"12-03-2023", "work_", "break_"};
-                objListView.model.addRow(fila);
             }
         });
     }
